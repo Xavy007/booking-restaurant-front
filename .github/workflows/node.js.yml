@@ -1,35 +1,31 @@
-name: Angular 9 CI/CD
+name: CI Angular
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main  # O la rama que quieras
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout del código
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: 🧰 Configurar Node.js (v14 para Angular 9)
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
 
-      - name: 📦 Instalar dependencias
+      - name: Install dependencies
         run: npm install
 
-      - name: 🧪 Ejecutar pruebas unitarias (si aplica)
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+      - name: Run tests
+        run: npm run test
 
-      - name: ⚙️ Compilar la app Angular 9
-        run: npm run build --prod
+      - name: Build Angular application
+        run: npm run build
 
-      - name: 📤 Guardar artefactos del build
-        uses: actions/upload-artifact@v3
-        with:
-          name: angular-build
-          path: dist/
+      - name: Deploy (ejemplo)  # Reemplazar con tu despliegue real
+        run: echo "Deploy to your desired service"
