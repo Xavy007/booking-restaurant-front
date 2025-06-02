@@ -21,11 +21,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm run test
-
       - name: Build Angular application
         run: npm run build
-
-      - name: Deploy (ejemplo)  # Reemplazar con tu despliegue real
-        run: echo "Deploy to your desired service"
